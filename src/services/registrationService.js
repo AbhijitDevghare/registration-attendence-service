@@ -4,7 +4,7 @@ const axios = require('axios'); // to call external services
 const AppError = require('../utils/error.utils');
 
 const USER_SERVICE_URL = "http://localhost:3000/user/profile";
-const EVENT_SERVICE_URL ="http://localhost:3005/events";
+const EVENT_SERVICE_URL ="http://localhost:3005";
 
 class RegistrationService {
   
