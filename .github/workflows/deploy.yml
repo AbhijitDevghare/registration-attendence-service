@@ -1,0 +1,21 @@
+name: Deploy registration service to Azure VM
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH Deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            cd registration-attendence-service
+            git pull origin main
+            npm install
+            pm2 restart registration-service || pm2 start server.js --name registration-service
