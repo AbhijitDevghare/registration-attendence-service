@@ -12,7 +12,7 @@ class   RegistrationController {
       const registration = await RegistrationService.registerUser(userId, eventId);
       res.status(201).json(registration);
     } catch (err) {
-      console.log(err)
+      console.log(err.message)
       res.status(400).json({ message: err.message });
     }
   }
@@ -25,6 +25,8 @@ class   RegistrationController {
     const registrations = await RegistrationService.getUserRegistrations(userId);
     return res.json(registrations);
   } catch (err) {
+          console.log(err.message)
+
     return res.status(400).json({ message: err.message });
   }
 }
@@ -37,6 +39,8 @@ class   RegistrationController {
       const registrations = await RegistrationService.getEventRegistrations(eventId);
       res.json(registrations);
     } catch (err) {
+            console.log(err.message)
+
       res.status(400).json({ message: err.message });
     }
   }
@@ -47,7 +51,7 @@ class   RegistrationController {
       const registration = await RegistrationService.cancelRegistration(id);
       res.status(200).json(registration);
     } catch (err) {
-      console.log(err)
+      console.log(err.message)
       res.status(400).json({ message: err.message });
     }
   }
@@ -58,6 +62,8 @@ class   RegistrationController {
       const attendance = await RegistrationService.checkIn(userId, checkinMethod, proofUrl);
       res.json(attendance);
     } catch (err) {
+            console.log(err.message)
+
       res.status(400).json({ message: err.message });
     }
   }
